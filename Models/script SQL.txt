@@ -1,0 +1,1 @@
+$csASCUNn = "SELECT SUM(movimiento_credito) - SUM(movimiento_debito) FROM bppcc WHERE codigo_centro_costo = "1-1" AND codigo_cuenta_contable LIKE '41%'"

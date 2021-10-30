@@ -1,0 +1,206 @@
+<div id="tablaRedes" class="col-md-12 d-none">
+	<div class="card card-plain" style="margin-top: 60px;">
+		<div class="card-header card-header-icon card-header-success">
+			<div class="card-icon card-button">
+			<a href="./views/modules/informes/esf.php" target="_blank"
+					><i class="fad fa-file-spreadsheet" style="color: #f8f9fa;font-size: 2rem;margin: 10px 0px 0px 10px;"></i>
+				</a>
+			</div>
+			<h4 class="card-title mt-0">INOFORME DE EJECUCIÓN PRESUPUESTAL</h4>
+			<p class="card-category"> Informe a  <?php echo $fecha_corte?> -  <span class="font-weight-bold">Centro de costos: 600-1 REUNE RED DE EMPRENDIMIENTO</span></p>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+			<!-- TABLA RESUMEN -->
+				<table class="table">
+					<tbody>
+						<tr class="text-center">
+							<td>
+							<span class="h3 font-weight-bold">RESUMEN</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table">
+					<thead class="table-info text-center font-weight-bold" >
+						<th class="font-weight-bold">
+							DETALLE
+						</th>
+						<th class="font-weight-bold">
+							VALOR
+						</th>
+					</thead>
+					<tbody>
+						<!-- SALDO AÑOS ANTERIORES -->
+						<tr class="text-center">
+							<td class="text-justify">
+								SALDO AÑOS ANTERIORES
+							</td>
+							<?php
+							if ($carteraTotalAntioquia != 0) {
+								echo'<td> $ '.number_format($carteraTotalAntioquia,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- INGRESOS DEL PERIODO -->
+						<tr class="text-center">
+							<td class="text-justify">
+								INGRESOS DEL PERIODO
+							</td>
+							<?php
+							if ($carteraTotalBogota != 0) {
+								echo'<td> $ '.number_format($carteraTotalBogota,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- GASTOS DEL PERIODO  -->
+						<tr class="text-center">
+							<td class="text-justify">
+								GASTOS DEL PERIODO
+							</td>
+							<?php
+							if ($carteraTotalCentro != 0) {
+								echo'<td> $ '.number_format($carteraTotalCentro,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- ANTICIPOS POR LEGALIZAR  -->
+						<tr class="text-center">
+							<td class="text-justify">
+								ANTICIPOS POR LEGALIZAR
+							</td>
+							<?php
+							if ($carteraTotalSuroccidente != 0) {
+								echo'<td> $ '.number_format($carteraTotalSuroccidente,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- RESULTADO DEL EJERCICIO   -->
+						<tr class="text-center">
+							<td class="font-weight-bold">
+								RESULTADO DEL EJERCICIO
+							</td>
+							<?php
+							if ($carteraTotal != 0) {
+								echo'<td class="font-weight-bold"> $ '.number_format($carteraTotal,0, ",", ".").'</td>';
+							}
+							else {echo'<td class="font-weight-bold"> $ -</td>';}
+							?>
+						</tr>
+					</tbody>
+				</table>
+				<!-- ... -->
+				<table class="table">
+					<thead class="table-info text-center font-weight-bold" >
+						<th class="font-weight-bold">
+							DISPONIBLE
+						</th>
+						<th class="font-weight-bold">
+							VALOR
+						</th>
+					</thead>
+					<tbody>
+						<!-- CARTERA POR COBRAR -->
+						<tr class="text-center">
+							<td class="text-justify">
+								CARTERA POR COBRAR
+							</td>
+							<?php
+							if ($carteraTotalAntioquia != 0) {
+								echo'<td> $ '.number_format($carteraTotalAntioquia,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- TOTAL DISPONIBLE -->
+						<tr class="text-center">
+							<td class="font-weight-bold">
+								TOTAL DISPONIBLE
+							</td>
+							<?php
+							if ($carteraTotal != 0) {
+								echo'<td class="font-weight-bold"> $ '.number_format($carteraTotal,0, ",", ".").'</td>';
+							}
+							else {echo'<td class="font-weight-bold"> $ -</td>';}
+							?>
+						</tr>
+					</tbody>
+				</table>
+				<!-- INFORMACIÓN DETALLADA -->
+				<table class="table">
+					<tbody>
+						<tr class="text-center">
+							<td>
+							<span class="h3 font-weight-bold">INFORMACIÓN DETALLADA</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="table">
+					<thead class="table-info text-center font-weight-bold" >
+						<th class="font-weight-bold">
+							INGRESOS
+						</th>
+						<th class="font-weight-bold">
+							EJECUCIÓN
+						</th>
+					</thead>
+					<tbody>
+						<!-- INGRESOS FONDO -->
+						<tr class="text-center">
+							<td class="text-justify">
+								INGRESOS FONDO
+							</td>
+							<?php
+							if ($carteraTotalAntioquia != 0) {
+								echo'<td> $ '.number_format($carteraTotalAntioquia,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- INGRESOS NO OPERACIONALES -->
+						<tr class="text-center">
+							<td class="text-justify">
+								INGRESOS NO OPERACIONALES
+							</td>
+							<?php
+							if ($carteraTotalBogota != 0) {
+								echo'<td> $ '.number_format($carteraTotalBogota,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- DEVOLUCIONES  -->
+						<tr class="text-center">
+							<td class="text-justify">
+								DEVOLUCIONES
+							</td>
+							<?php
+							if ($carteraTotalCentro != 0) {
+								echo'<td> $ '.number_format($carteraTotalCentro,0, ",", ".").'</td>';
+							}
+							else {echo'<td> $ -</td>';}
+							?>
+						</tr>
+						<!-- TOTAL INGRESOS -->
+						<tr class="text-center">
+							<td class="font-weight-bold">
+								TOTAL INGRESOS
+							</td>
+							<?php
+							if ($carteraTotal != 0) {
+								echo'<td class="font-weight-bold"> $ '.number_format($carteraTotal,0, ",", ".").'</td>';
+							}
+							else {echo'<td class="font-weight-bold"> $ -</td>';}
+							?>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
