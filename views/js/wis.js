@@ -200,164 +200,173 @@ $(document).ready(function () {
 				clearInterval(simulateWindowResize)
 			}, 1000)
 		})
+	})
+})
+/** */
 
-		/** */
+// 1.
+$(document).ready(function () {
+	md.checkFullPageBackgroundImage()
+	setTimeout(function () {
+		// después de 1000 ms agregamos la clase animada a la tarjeta de login/bloqueo
+		$('.card').removeClass('card-hidden')
+	}, 1000)
+})
 
-		// 1.
-		md.checkFullPageBackgroundImage()
-		setTimeout(function () {
-			// después de 1000 ms agregamos la clase animada a la tarjeta de login/bloqueo
-			$('.card').removeClass('card-hidden')
-		}, 1000)
-
-		// 2.
-		// Inicializar la libreria Sweet Alert
-		md.showSwal()
-
-		// 3.
-		// Inicializar la libreria dataTables
-		$('#datatables').DataTable({
-			pagingType: 'full_numbers',
-			lengthMenu: [
-				[10, 25, 50, -1],
-				[10, 25, 50, 'Todos'],
-			],
-			iDisplayLength: 10,
-			responsive: true,
-			language: {
-				sProcessing: 'Procesando...',
-				sLengthMenu: 'Mostrar _MENU_ registros.',
-				sZeroRecords: 'No se encontraron resultados.',
-				sEmptyTable: 'No hay datos disponibles en la tabla.',
-				sInfo: 'Mostrando registros _START_ al _END_ de un total de _TOTAL_',
-				sInfoEmpty: 'Mostrando 0 registros de un total de 0.',
-				sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
-				sInfoPostFix: '',
-				search: 'Buscar por:',
-				searchPlaceholder: 'Nombre o Documento',
-				sUrl: '',
-				sInfoThousands: ',',
-				sLoadingRecords: 'Cargando...',
-				oPaginate: {
-					sFirst: 'Primero',
-					sLast: 'Último',
-					sNext: 'Siguiente',
-					sPrevious: 'Anterior',
-				},
-				oAria: {
-					sSortAscending: ': Odenar de manera ascendente',
-					sSortDescending: ': Odenar de manera descendente',
-				},
+$(document).ready(function () {
+	// 2.
+	// Inicializar la libreria Sweet Alert
+	md.showSwal()
+})
+$(document).ready(function () {
+	// 3.
+	// Inicializar la libreria dataTables
+	$('#datatables').DataTable({
+		pagingType: 'full_numbers',
+		lengthMenu: [
+			[10, 25, 50, -1],
+			[10, 25, 50, 'Todos'],
+		],
+		iDisplayLength: 10,
+		responsive: true,
+		language: {
+			sProcessing: 'Procesando...',
+			sLengthMenu: 'Mostrar _MENU_ registros.',
+			sZeroRecords: 'No se encontraron resultados.',
+			sEmptyTable: 'No hay datos disponibles en la tabla.',
+			sInfo: 'Mostrando registros _START_ al _END_ de un total de _TOTAL_',
+			sInfoEmpty: 'Mostrando 0 registros de un total de 0.',
+			sInfoFiltered: '(filtrado de un total de _MAX_ registros)',
+			sInfoPostFix: '',
+			search: 'Buscar por:',
+			searchPlaceholder: 'Nombre o Documento',
+			sUrl: '',
+			sInfoThousands: ',',
+			sLoadingRecords: 'Cargando...',
+			oPaginate: {
+				sFirst: 'Primero',
+				sLast: 'Último',
+				sNext: 'Siguiente',
+				sPrevious: 'Anterior',
 			},
-		})
+			oAria: {
+				sSortAscending: ': Odenar de manera ascendente',
+				sSortDescending: ': Odenar de manera descendente',
+			},
+		},
+	})
+})
+$(document).ready(function () {
+	// 4.
+	// Inicializar la libreria Select2
+	$('.centros-de-costos').select2()
+})
+$(document).ready(function () {
+	// 5.
+	//Bloquear sesion inactivar
+	var timeout
+	document.onmousemove = function () {
+		clearTimeout(timeout)
+		timeout = setTimeout(function () {
+			window.location = 'bloquear'
+		}, 900000)
+	}
+})
+$(document).ready(function () {
+	// 6.
+	// Inicializar el wizard
+	demo.initMaterialWizard()
+	setTimeout(function () {
+		$('.card.card-wizard').addClass('active')
+	}, 600)
+})
+$(document).ready(function () {
+	// 7.
+	// initialise Datetimepicker and Sliders
+	md.initFormExtendedDatetimepickers()
+	if ($('.slider').length != 0) {
+		md.initSliders()
+	}
+})
 
-		// 4.
-		// Inicializar la libreria Select2
-		$('.centros-de-costos').select2()
-
-		// 5.
-		//Bloquear sesion inactivar
-		var timeout
-		document.onmousemove = function () {
-			clearTimeout(timeout)
-			timeout = setTimeout(function () {
-				window.location = 'bloquear'
-			}, 900000)
+// 8.
+// mensajes del sistema WIS
+function cargaAB() {
+	let timerInterval
+	Swal.fire({
+		title: 'Cargando archivo base a WIS!',
+		html: '<b></b>',
+		timer: 5000,
+		timerProgressBar: true,
+		didOpen: () => {
+			Swal.showLoading()
+			const b = Swal.getHtmlContainer().querySelector('b')
+			timerInterval = setInterval(() => {
+				b.textContent = Swal.getTimerLeft()
+			}, 100)
+		},
+		willClose: () => {
+			clearInterval(timerInterval)
+		},
+	}).then((result) => {
+		/* Read more about handling dismissals below */
+		if (result.dismiss === Swal.DismissReason.timer) {
+			console.log('Cargando archivo base...')
+			msj()
+			// window.location = 'inicio'
 		}
-		// 6.
-		// Inicializar el wizard
-		demo.initMaterialWizard()
-		setTimeout(function () {
-			$('.card.card-wizard').addClass('active')
-		}, 600)
-
-		// 7.
-		// initialise Datetimepicker and Sliders
-		md.initFormExtendedDatetimepickers()
-		if ($('.slider').length != 0) {
-			md.initSliders()
-		}
-
-		// 8.
-		// mensajes del sistema WIS
-		function cargaAB() {
-			let timerInterval
-			Swal.fire({
-				title: 'Cargando archivo base a WIS!',
-				html: '<b></b>',
-				timer: 5000,
-				timerProgressBar: true,
-				didOpen: () => {
-					Swal.showLoading()
-					const b = Swal.getHtmlContainer().querySelector('b')
-					timerInterval = setInterval(() => {
-						b.textContent = Swal.getTimerLeft()
-					}, 100)
-				},
-				willClose: () => {
-					clearInterval(timerInterval)
-				},
-			}).then((result) => {
-				/* Read more about handling dismissals below */
-				if (result.dismiss === Swal.DismissReason.timer) {
-					console.log('Cargando archivo base...')
-					msj()
-					// window.location = 'inicio'
-				}
-			})
-		}
-		function msj() {
-			Swal.fire({
-				icon: 'success',
-				title:
-					'¡Archivo base cargado! Se subieron 1172 registros a la base de datos WIS',
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				timer: 5000,
-				timerProgressBar: true,
-				didOpen: (toast) => {
-					toast.addEventListener('mouseenter', Swal.stopTimer)
-					toast.addEventListener('mouseleave', Swal.resumeTimer)
-				},
-			})
-		}
-		function guardadoExitos() {
-			Swal.fire({
-				icon: 'success',
-				title: '¡Todos los datos se guardaron de manera exitosa.',
-				toast: true,
-				position: 'center',
-				showConfirmButton: false,
-				timer: 10000,
-				timerProgressBar: true,
-				didOpen: (toast) => {
-					toast.addEventListener('mouseenter', Swal.stopTimer)
-					toast.addEventListener('mouseleave', Swal.resumeTimer)
-				},
-			})
-		}
-		function error() {
-			Swal.fire({
-				icon: 'danger',
-				title:
-					'¡Ooooups! Parece que algo salio mal; no se gusradaron los datos',
-				toast: true,
-				position: 'center',
-				showConfirmButton: false,
-				timer: 10000,
-				timerProgressBar: true,
-				didOpen: (toast) => {
-					toast.addEventListener('mouseenter', Swal.stopTimer)
-					toast.addEventListener('mouseleave', Swal.resumeTimer)
-				},
-			})
-		}
-
-		//9.
-		// Input solo números
-		$('.input-number').on('input', function () {
-			this.value = this.value.replace(/[^0-9]/g, '')
-		})
+	})
+}
+function msj() {
+	Swal.fire({
+		icon: 'success',
+		title:
+			'¡Archivo base cargado! Se subieron 1172 registros a la base de datos WIS',
+		toast: true,
+		position: 'top-end',
+		showConfirmButton: false,
+		timer: 5000,
+		timerProgressBar: true,
+		didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+		},
+	})
+}
+function guardadoExitos() {
+	Swal.fire({
+		icon: 'success',
+		title: '¡Todos los datos se guardaron de manera exitosa.',
+		toast: true,
+		position: 'center',
+		showConfirmButton: false,
+		timer: 10000,
+		timerProgressBar: true,
+		didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+		},
+	})
+}
+function error() {
+	Swal.fire({
+		icon: 'danger',
+		title: '¡Ooooups! Parece que algo salio mal; no se gusradaron los datos',
+		toast: true,
+		position: 'center',
+		showConfirmButton: false,
+		timer: 10000,
+		timerProgressBar: true,
+		didOpen: (toast) => {
+			toast.addEventListener('mouseenter', Swal.stopTimer)
+			toast.addEventListener('mouseleave', Swal.resumeTimer)
+		},
+	})
+}
+$(document).ready(function () {
+	//9.
+	// Input solo números
+	$('.input-number').on('input', function () {
+		this.value = this.value.replace(/[^0-9]/g, '')
 	})
 })
