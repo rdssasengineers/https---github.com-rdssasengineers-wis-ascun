@@ -179,7 +179,8 @@ $carteraCuotas = $carteraCuotasAntioquia['Suma'] + $carteraCuotasBogota['Suma'] 
 	<div class="card card-plain" style="margin-top: 60px;">
 		<div class="card-header card-header-icon card-header-success">
 			<div class="card-icon card-button">
-			<a href="./views/modules/informes/esf.php" target="_blank"
+			<!-- esf.php -->
+			<a href="./views/modules/informes/rc.php" target="_blank"
 					><i class="fad fa-file-spreadsheet" style="color: #f8f9fa;font-size: 2rem;margin: 10px 0px 0px 10px;"></i>
 				</a>
 			</div>
